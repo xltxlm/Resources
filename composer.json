@@ -1,0 +1,21 @@
+{
+  "name": "xltxlm/resources",
+  "authors": [
+    {
+      "name": "copygithub",
+      "email": "xltxlm@qq.com"
+    }
+  ],
+  "description":"资源相关操作的限制定义",
+  "require": {
+    "php": ">=7.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "xltxlm\\resources\\": [
+        "src/",
+        "./"
+      ]
+    }
+  }
+}
