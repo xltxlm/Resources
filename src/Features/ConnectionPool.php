@@ -25,7 +25,11 @@ class ConnectionPool extends ConnectionPool\ConnectionPool_implements
         $config = $this->getConfigRandom()->getOneConfigDefine();
         $key = md5(serialize($config)) . '@' . posix_getpid();
         if (self::$ConnectionPool[$key] == null) {
-            self::$ConnectionPool[$key] = $config->__invoke();
+            $resource = $config->NewConnect();
+            if (is_object($resource) == false) {
+                throw new \Exception("不是一个链接资源");
+            }
+            self::$ConnectionPool[$key] = $resource;
         }
         return self::$ConnectionPool[$key];
     }

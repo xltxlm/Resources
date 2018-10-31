@@ -85,4 +85,10 @@ public function setPort(int $Port);
     */
     public function __invoke();
     
+    /**
+    *   创建新链接;
+    *   @return ;
+    */
+    public function NewConnect();
+    
 }

@@ -121,4 +121,10 @@ Trait ConfigDefineTrait_implements
     */
     abstract public function __invoke();
 
+    /**
+     *   创建新链接;
+     *   @return ;
+    */
+    abstract public function NewConnect();
+
 }
