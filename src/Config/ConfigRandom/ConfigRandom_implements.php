@@ -67,4 +67,10 @@ abstract class ConfigRandom_implements
         return $this;
     }
 
+    /**
+     *   返回一个具体的php原生扩展类;
+     *   @return ;
+    */
+    abstract public function __invoke();
+
 }

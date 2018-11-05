@@ -2,6 +2,9 @@
 
 namespace xltxlm\resources\Config;
 
+use xltxlm\resources\Exception\Configs_Empty;
+use xltxlm\resources\Features\ConnectionPool;
+
 /**
  * 随机返回一个同等的配置信息;
  */
@@ -21,10 +24,16 @@ class ConfigRandom extends ConfigRandom\ConfigRandom_implements
     public function getOneConfigDefine(): \xltxlm\resources\Config\ConfigDefine
     {
         if (empty($this->getConfigs())) {
-            throw new \Exception("配置数组为空");
+            throw new Configs_Empty();
         }
         $index = array_rand($this->getConfigs());
         return $this->getConfigs()[$index];
+    }
+
+    public function __invoke()
+    {
+        return (new ConnectionPool($this))
+            ->__invoke();
     }
 
 
