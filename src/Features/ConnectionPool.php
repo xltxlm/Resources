@@ -23,7 +23,7 @@ class ConnectionPool extends ConnectionPool\ConnectionPool_implements
     public function __invoke()
     {
         $config = $this->getConfigRandom()->getOneConfigDefine();
-        $key = md5(serialize($config)) . '@' . posix_getpid();
+        $key = md5(serialize([$config->getTns(), $config->getUser(), $config->getPassword(), $config->getPort()])) . '@' . posix_getpid();
         if (self::$ConnectionPool[$key] == null) {
             $resource = $config->NewConnect();
             if (is_object($resource) == false) {
